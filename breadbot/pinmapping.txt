@@ -1,0 +1,13 @@
+2019-01-11
+LED
+GND 
+D7  - 13 - Output
+
+HX711
+D1  -  5 - Scale Fct Input 2
+D2  -  4 - Scale Fct Input 1
+ 
+
+
+
+
