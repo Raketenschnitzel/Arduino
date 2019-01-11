@@ -1,11 +1,19 @@
 2019-01-11
-LED
-GND 
-D7  - 13 - Output
+D7/GPIO13- Output LED
 
-HX711
-D1  -  5 - Scale Fct Input 2
-D2  -  4 - Scale Fct Input 1
+HX711    - ESP8266
+D1/GPIO5 - Scale SCK (Serial Clock)
+D2/GPIO4 - Scale Data
+GND      - GND
+3.3V     - VCC
+wichtig: mit externer Spannungsversorgung hat es nicht geklappt, ggf. müssten dann
+ESP8266 und die externe Spannung auf den gleichen Ground
+
+HX711    - Load Gauge  
+E+       -  Red
+E-       -  Black
+A+       -  Green
+A-       -  White
  
 
 

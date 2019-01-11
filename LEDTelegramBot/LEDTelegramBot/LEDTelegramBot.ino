@@ -19,8 +19,8 @@
 //char ssid[]     = "Lotte-WLAN";                 // your network SSID (name)
 //char password[] = "GrueneLotteApril2016.";      // your network key
 
-char ssid[]       = "Kanchenjunga";               // your network SSID (name)
-char password[]   = "4U368HYNy6";                 // your network key
+char ssid[]       = "Lotte-WLAN";               // your network SSID (name)
+char password[]   = "GrueneLotteApril2016.";                 // your network key
 
 
 
