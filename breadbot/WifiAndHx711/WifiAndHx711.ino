@@ -9,11 +9,11 @@
  *                                                                 *
     written by Giancarlo Bacchio
  *******************************************************************/
-
+#include "HX711.h" 
 #include <ESP8266WiFi.h>
 #include <WiFiClientSecure.h>
 //#include <ESP8266TelegramBOT.h>
-#include "HX711.h" 
+
 
 HX711 scale; 
 
@@ -114,8 +114,9 @@ void loop() {
     Bot_lasttime = millis();
   }*/
   if (millis() > scale_lasttime + 5000) {
-    Serial.print(scale.get_units(1));
-    Serial.print("");
+    Serial.print(scale.get_units(100));
+    Serial.print(" g");
+    Serial.print("\r\n");
     scale_lasttime = millis();
   }
   
