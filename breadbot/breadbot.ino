@@ -15,8 +15,6 @@
 #include <ESP8266TelegramBOT.h>
 #include "HX711.h" 
 
-HX711 scale; 
-
 // Initialize Wifi connection to the router
 char ssid[]       = "Lotte-WLAN";               // your network SSID (name)
 char password[]   = "GrueneLotteApril2016.";                 // your network key
@@ -37,6 +35,7 @@ char botanswer[15];
 // Initialize HX711 for Scale Reading
 float calibration_factor = 405.94; //calibration value 2019-01-11
 float offset             = 322342; 
+HX711 scale; 
 
 /********************************************
    EchoMessages - function to Echo messages
@@ -53,7 +52,7 @@ void Bot_ExecMessages() {
       bot.sendMessage(bot.message[i][4], "Led is OFF", "");
     }
      if (bot.message[i][5] == "breadamount") {
-      weight = scale.get_units(10);
+      weight = scale.get_units(1);
       dtostrf(weight,7, 3, botanswer);
       bot.sendMessage(bot.message[i][4], botanswer, "");
     }
@@ -77,14 +76,7 @@ void setup() {
 
   //deactivate Watchdog
   ESP.wdtDisable();
-
-  //scale
-  Serial.print("Initialize Scale");
-  scale.begin(4, 5); //GPIO4 is Data, GPIO5 is Serial Clock SCK
-  scale.set_scale(calibration_factor);
-  scale.set_offset(offset); //set fix offset for breadbot
-  Serial.print(scale.get_units(),10);
-
+  
   // attempt to connect to Wifi network:
   delay(3000);
   Serial.print("Connecting Wifi: ");
@@ -100,6 +92,14 @@ void setup() {
   Serial.println("IP address: ");
   IPAddress ip = WiFi.localIP();
   Serial.println(ip);
+
+  //scale
+  Serial.print("Initialize Scale\r\n");
+  scale.begin(4, 5); //GPIO4 is Data, GPIO5 is Serial Clock SCK
+  scale.set_scale(calibration_factor);
+  scale.set_offset(offset); //set fix offset for breadbot
+
+  Serial.print("Start Bot\r\n");
   bot.begin();      // launch Bot functionalities
   pinMode(13, OUTPUT); // initialize digital pin 2 as an output.
 }

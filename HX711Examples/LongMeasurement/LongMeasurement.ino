@@ -35,15 +35,33 @@ void loop() {
 
   scale.set_scale(calibration_factor); //Adjust to this calibration factor
 
-  Serial.print("Reading: ");
+
+  
   ESP.wdtDisable();
-  Serial.print(scale.get_units(10), 3); //we use average of 10 values, and 3 decimal places
-  ESP.wdtEnable(2000);
-  Serial.print(" g"); 
-  Serial.print(" calibration_factor: ");
-  Serial.print(calibration_factor);
-  Serial.print(" GetOffset: ");
-  Serial.print(scale.get_offset());
-  Serial.println();  
+  
+  int counter = 10;
+  
+  Serial.print("Test average with ");
+  Serial.print(counter);
+  Serial.println("Reading: ");
+  Serial.println(scale.get_units(counter), 3); //we use average of 10 values, and 3 decimal places
+  Serial.print(" g\r\n"); 
+  counter = counter + 10;
+      
+  Serial.print("Test average with ");
+  Serial.print(counter);
+  Serial.println("Reading: ");
+  Serial.println(scale.get_units(counter), 3); //we use average of 10 values, and 3 decimal places
+  Serial.print(" g\r\n"); 
+  counter = counter + 10;
+      
+  Serial.print("Test average with ");
+  Serial.print(counter);
+  Serial.println("Reading: ");
+  Serial.println(scale.get_units(counter), 3); //we use average of 10 values, and 3 decimal places
+  Serial.print(" g\r\n"); 
+  counter = counter + 10;
+  
+
 }
 
